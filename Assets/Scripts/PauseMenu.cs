@@ -1,9 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    [SerializeField] Button pauseButton;
+    void Start()
+    {
+        #region Mobile detection
+            if (Screen.height > Screen.width){
+                pauseButton.gameObject.SetActive(true);
+            }
+            
+        #endregion
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
-    void Pause(){
+    public void Pause(){
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

@@ -6,10 +6,21 @@ public class GameManager : MonoBehaviour
     private GameObject playerClone;
     private bool cloneCreated = false;
     private Vector3 cloneCreatedPosition;
-
+    private float lastTapTime = 0;
+    private float doubleTapTimeBetween = 0.3f;
+    private bool doubleTapped = false;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        #region Mobile cloning implementation
+            if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+                float timeSinceLastTap = Time.time - lastTapTime;
+                if (timeSinceLastTap <= doubleTapTimeBetween){
+                    doubleTapped = true;
+                }
+                lastTapTime = Time.time;
+            }
+        #endregion
+        if (Input.GetKeyDown(KeyCode.Space) || doubleTapped)
         {
             if (!cloneCreated)
             {
@@ -22,6 +33,7 @@ public class GameManager : MonoBehaviour
                 Destroy(playerClone);
                 cloneCreated = false;
             }
+            doubleTapped = false;
         }
 
         // If the clone exists, move it in mirrored relation to the player's movements
