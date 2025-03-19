@@ -8,12 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ring
-  m_Shader: {fileID: -6465566751694194690, guid: 14256906509f0e848a517dbd717a16ec, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: a76361f737f181843809dc518991444e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_InvalidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SURFACE_TYPE_TRANSPARENT
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -25,6 +27,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_79BA51A6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_6778832640224a9e9801dd5ac68fdd0a_Texture_1_Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -46,10 +56,28 @@ Material:
     - Vector1_AE9DFBD: 0.12
     - Vector1_D65B033B: 0.68
     - Vector1_E266B039: 0.72
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _CastShadows: 1
+    - _Cull: 2
+    - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _SrcBlend: 1
+    - _Surface: 1
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
+    - _radius: 0.4
+    - _ringThickness: 0.02
     m_Colors:
     - Color_63659391: {r: 32.32786, g: 32.32786, b: 32.32786, a: 1}
+    - _Color: {r: 0, g: 18.82353, b: 25.09804, a: 1}
+    - _Color2: {r: 8.47419, g: 0, b: 0.08561665, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2702505221664541180

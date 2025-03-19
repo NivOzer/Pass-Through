@@ -26,8 +26,8 @@ Shader "Custom/PortalCircleShader"
 
             struct v2f
             {
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float4 screenPos : TEXCOORD1;
             };
 
             sampler2D _MainTex;
@@ -37,19 +37,20 @@ Shader "Custom/PortalCircleShader"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.screenPos = ComputeScreenPos(o.vertex);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
+                float2 screenUV = i.screenPos.xy / i.screenPos.w; // Convert to screen-space UVs
                 float2 center = float2(0.5, 0.5);
-                float dist = distance(i.uv, center);
+                float dist = distance(screenUV, center);
 
-                // Smooth transition at edges
+                // Smooth edge transition
                 float alpha = smoothstep(0.5, 0.5 - _EdgeSmoothness, dist);
                 
-                fixed4 color = tex2D(_MainTex, i.uv);
+                fixed4 color = tex2D(_MainTex, screenUV);
                 color.a *= alpha; // Apply smooth transparency
 
                 return color;

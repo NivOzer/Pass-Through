@@ -64,7 +64,7 @@ namespace MoonBika
             // Optionally adjust light
             if (adjustLight)
             {
-                Light light = GameObject.FindObjectOfType<Light>();
+                Light light = Object.FindFirstObjectByType<Light>();
                 if (light != null)
                 {
                     light.intensity = 1.5f; // Adjust as needed

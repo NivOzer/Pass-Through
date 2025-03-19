@@ -56,7 +56,7 @@ namespace MoonBika
         // 2. Optimize Meshes: Combine and reduce vertex count
         private static void OptimizeMeshes()
         {
-            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+            GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
             foreach (GameObject obj in allObjects)
             {
@@ -74,7 +74,7 @@ namespace MoonBika
         // 3. Optimize LOD: Automatically add LOD to objects without one
         private static void OptimizeLOD()
         {
-            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+            GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
             foreach (GameObject obj in allObjects)
             {
@@ -100,7 +100,7 @@ namespace MoonBika
         // 4. Optimize Lighting: Reduce unnecessary lighting elements
         private static void OptimizeLighting()
         {
-            Light[] lights = GameObject.FindObjectsOfType<Light>();
+            Light[] lights = Object.FindObjectsByType<Light>(FindObjectsSortMode.None);
             foreach (Light light in lights)
             {
                 if (light.type == LightType.Directional)
@@ -113,7 +113,7 @@ namespace MoonBika
                 }
             }
 
-            ReflectionProbe[] probes = GameObject.FindObjectsOfType<ReflectionProbe>();
+            ReflectionProbe[] probes = Object.FindObjectsByType<ReflectionProbe>(FindObjectsSortMode.None);
             foreach (ReflectionProbe probe in probes)
             {
                 probe.enabled = false;
@@ -138,7 +138,7 @@ namespace MoonBika
         // 6. Batch Disable Unused Components: Disable unnecessary components like colliders
         private static void BatchDisableUnusedComponents()
         {
-            GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+            GameObject[] allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
             foreach (GameObject obj in allObjects)
             {
@@ -156,7 +156,7 @@ namespace MoonBika
         // 7. Combine Static Meshes: Combine static meshes to reduce draw calls
         private static void CombineStaticMeshes()
         {
-            GameObject[] staticObjects = GameObject.FindObjectsOfType<GameObject>();
+            GameObject[] staticObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
             foreach (GameObject obj in staticObjects)
             {

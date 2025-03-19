@@ -23,7 +23,7 @@ namespace MoonBika
 
         private void OrganizeHierarchy()
         {
-            Transform[] allTransforms = GameObject.FindObjectsOfType<Transform>();
+            Transform[] allTransforms = Object.FindObjectsByType<Transform>(FindObjectsSortMode.None);
 
             foreach (Transform transform in allTransforms)
             {
