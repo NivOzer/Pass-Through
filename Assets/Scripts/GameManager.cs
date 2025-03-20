@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set;}
     [SerializeField] private GameObject player;
     private GameObject playerClone;
     private bool cloneCreated = false;
@@ -9,6 +11,19 @@ public class GameManager : MonoBehaviour
     private float lastTapTime = 0;
     private float doubleTapTimeBetween = 0.3f;
     private bool doubleTapped = false;
+    public int record = 0;
+    [SerializeField] private TextMeshProUGUI highestLevelText;
+    private void Awake()
+    {
+        if (Instance == null){
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
         #region Mobile cloning implementation
@@ -51,5 +66,10 @@ public class GameManager : MonoBehaviour
             // Same Rotation as player
             playerClone.transform.rotation = player.transform.rotation;
         }
+    }
+
+    public void SetRecord(int level){
+        record = level;
+        highestLevelText.text = "Highest Level : " + record;
     }
 }

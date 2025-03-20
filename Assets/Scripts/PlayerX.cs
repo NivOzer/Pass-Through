@@ -13,7 +13,6 @@ public class PlayerX : MonoBehaviour
     private int ringWallAmount;
     private int passedThrough = 0;
     private GameObject portal;
-    private int currentlevel = 0;
     public GameObject MisedText;
     [SerializeField] GameObject audioObj;
     private AudioManagerX audioManager;
@@ -79,12 +78,15 @@ public class PlayerX : MonoBehaviour
         Renderer renderer = MissZone.GetComponent<Renderer>();
         Material material = renderer.material;
         material.SetFloat("_Visibility", 1);
+        material.SetInt("_InvokeMissZone",1);
         MisedText.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         MisedText.SetActive(false);
         Debug.Log("Missed, Restarting");
-        SceneManager.LoadScene(currentlevel);
+        // SceneManager.LoadScene(currentlevel);
         passedThroughRing = false;
+        transform.position = new Vector3(0, 0);
+        material.SetInt("_InvokeMissZone",0);
     }
     
 }

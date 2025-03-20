@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject MainMenuUI;
     public GameObject verticalPauseMenuUI;
     public RectTransform joyStickArea;
     [SerializeField] Button pauseButton;
@@ -41,6 +42,7 @@ public class PauseMenu : MonoBehaviour
             pauseButton.gameObject.SetActive(true);
         }
         PauseMenuUI.SetActive(false);
+        MainMenuUI.SetActive(false); //O(1)
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
