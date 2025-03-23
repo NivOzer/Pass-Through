@@ -18,9 +18,10 @@ public class PlayerX : MonoBehaviour
     private AudioManagerX audioManager;
 
     void Start(){
-        portal = GameObject.FindGameObjectWithTag("Portal");
-        portal.GetComponent<Renderer>().enabled = false;
+        // portal = GameObject.FindGameObjectWithTag("Portal");
+        // portal.GetComponent<Renderer>().enabled = false;
         audioManager = audioObj.GetComponent<AudioManagerX>();   
+        // Debug.Log(ringWallAmount);
     }
     void Update()
     {
@@ -42,9 +43,9 @@ public class PlayerX : MonoBehaviour
         //Apply Rotation
         transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
 
-        if (passedThrough == ringWallAmount -1){
-            portal.GetComponent<Renderer>().enabled = true;
-        }
+        // if (passedThrough == ringWallAmount -1){
+        //     portal.GetComponent<Renderer>().enabled = true;
+        // }
     }
 
     void Awake(){
@@ -55,7 +56,8 @@ public class PlayerX : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.CompareTag("Ring")){
             // Destroy(other.gameObject);
-            passedThrough++;
+            // passedThrough++;
+            // Debug.Log(passedThrough);
             passedThroughRing = true;
         }
         else if (other.CompareTag("MissZone"))

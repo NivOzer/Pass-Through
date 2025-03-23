@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_Name
       value: Sphere
@@ -195,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_TagString
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -418,7 +426,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &341012821
 Transform:
@@ -644,7 +652,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &535473467
 Transform:
@@ -783,6 +791,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_Name
       value: Sphere (2)
@@ -790,6 +802,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_TagString
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -918,6 +934,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ring
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -973,7 +993,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1165721550
 Transform:
@@ -1081,7 +1101,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1353236468
 Transform:
@@ -1189,7 +1209,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1374891295
 Transform:
@@ -1446,7 +1466,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!224 &1623524498
 RectTransform:
@@ -1627,7 +1647,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1648819466
 Transform:
@@ -1732,7 +1752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1778464720
 Transform:
@@ -1776,7 +1796,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1867327541
 Transform:
@@ -2039,6 +2059,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_Name
       value: Sphere (3)
@@ -2046,6 +2070,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_TagString
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2473,7 +2501,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &1978092890
 Transform:
@@ -2581,7 +2609,7 @@ GameObject:
   m_TagString: MissZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 64
   m_IsActive: 1
 --- !u!4 &2058278418
 Transform:
@@ -2840,7 +2868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2878,6 +2906,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_Name
       value: Sphere (1)
@@ -2885,6 +2917,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_TagString
       value: Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 6317578925029434746, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
