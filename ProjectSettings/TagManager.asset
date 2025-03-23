@@ -8,6 +8,7 @@ TagManager:
   - MissZone
   - Portal
   - OtherPortal
+  - End
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private bool doubleTapped = false;
     public int record = 0;
     [SerializeField] private TextMeshProUGUI highestLevelText;
+    [SerializeField] private GameObject GameWonMenu;
     private void Awake()
     {
         if (Instance == null){
@@ -71,5 +72,9 @@ public class GameManager : MonoBehaviour
     public void SetRecord(int level){
         record = level;
         highestLevelText.text = "Highest Level : " + record;
+    }
+
+    public void GameWon(){
+        GameWonMenu.SetActive(true);
     }
 }
