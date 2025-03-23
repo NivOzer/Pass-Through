@@ -1566,6 +1566,10 @@ PrefabInstance:
       value: PortalRing
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9ab5538a4d59cf4eaf8195e9a9429bb, type: 3}
       propertyPath: m_TagString
       value: Ring
       objectReference: {fileID: 0}
@@ -1605,9 +1609,9 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
@@ -10081,7 +10085,7 @@ Transform:
   m_GameObject: {fileID: 1889457738}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.58, z: 250}
+  m_LocalPosition: {x: 0, y: 2.58, z: 251}
   m_LocalScale: {x: 30, y: 0, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10729,7 +10733,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080690347}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &2080690352
 MonoBehaviour:
   m_ObjectHideFlags: 0

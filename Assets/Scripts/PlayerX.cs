@@ -58,15 +58,26 @@ public class PlayerX : MonoBehaviour
             passedThrough++;
             passedThroughRing = true;
         }
-        else if(other.CompareTag("MissZone")){
+        else if (other.CompareTag("MissZone"))
+        {
             DoubleWall doubleWall = other.GetComponent<DoubleWall>();
-            if (doubleWall == null || doubleWall.allPassed){
-                StartCoroutine(PassRing());
+
+            if (doubleWall != null) //double-ring wall
+            {
+                if (doubleWall.allPassed)
+                    StartCoroutine(PassRing());
+                else
+                    StartCoroutine(HitMissZone(other.gameObject));
             }
-            else{
-                StartCoroutine(HitMissZone(other.gameObject));
+            else //regular MissZone
+            {
+                if (passedThroughRing)
+                    StartCoroutine(PassRing());
+                else
+                    StartCoroutine(HitMissZone(other.gameObject));
             }
         }
+
         else if(other.CompareTag("End")){
             GameManager.Instance.GameWon();
         }
@@ -95,11 +106,13 @@ public class PlayerX : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         MisedText.SetActive(false);
         Debug.Log("Missed, Restarting");
-        // SceneManager.LoadScene(currentlevel);
         passedThroughRing = false;
+        PortalManager.Instance.ResetToInitialScenes();
         transform.position = new Vector3(0, 0);
         material.SetInt("_InvokeMissZone",0);
     }
+
+
 
 
     

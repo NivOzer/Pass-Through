@@ -1638,7 +1638,7 @@ Transform:
   m_GameObject: {fileID: 1648819465}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.58, z: 101}
+  m_LocalPosition: {x: 0, y: 0, z: 101}
   m_LocalScale: {x: 30, y: 0, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1769,8 +1769,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1867327541}
   - component: {fileID: 1867327542}
-  - component: {fileID: 1867327543}
   - component: {fileID: 1867327544}
+  - component: {fileID: 1867327543}
   m_Layer: 0
   m_Name: Plane
   m_TagString: MissZone
@@ -1787,7 +1787,7 @@ Transform:
   m_GameObject: {fileID: 1867327540}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.58, z: 51}
+  m_LocalPosition: {x: 0, y: 0, z: 51}
   m_LocalScale: {x: 30, y: 0, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []

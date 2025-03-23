@@ -42,6 +42,9 @@ public class PortalManager : MonoBehaviour
             SceneManager.LoadSceneAsync(nextLevelIndex, LoadSceneMode.Additive);
             Debug.Log($"Preloaded level: {nextLevelIndex}");
         }
+
+
+        
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -49,22 +52,24 @@ public class PortalManager : MonoBehaviour
         if (mode == LoadSceneMode.Additive)
         {
             Debug.Log($"New scene loaded: {scene.name}");
-
-            // Search ONLY inside the newly loaded scene
-            foreach (GameObject obj in scene.GetRootGameObjects())
-            {
-                if (obj.CompareTag("OtherPortal"))
-                {
-                    OtherPortal = obj.transform;
-                    Debug.Log($"OtherPortal assigned from scene: {scene.name}");
-                    return; // Stop searching after finding it
-                }
-            }
-
-            Debug.LogWarning($"No OtherPortal found in scene: {scene.name}");
+            AssignOtherPortalFromScene(scene);
         }
     }
 
+    private void AssignOtherPortalFromScene(Scene scene)
+    {
+        foreach (GameObject obj in scene.GetRootGameObjects())
+        {
+            if (obj.CompareTag("OtherPortal"))
+            {
+                OtherPortal = obj.transform;
+                Debug.Log($"OtherPortal assigned from scene: {scene.name}");
+                return;
+            }
+        }
+
+        Debug.LogWarning($"No OtherPortal found in scene: {scene.name}");
+    }
 
 
 
@@ -82,6 +87,8 @@ public class PortalManager : MonoBehaviour
             player.Rotate(Vector3.up, rotationDiff);
 
             Debug.Log("Player teleported to OtherPortal.");
+            Debug.Log("Moving from scene " + SceneManager.GetActiveScene().name + " to " + (SceneManager.GetActiveScene().buildIndex + 1));
+
         }
     }
 
@@ -90,5 +97,25 @@ public class PortalManager : MonoBehaviour
         if (currentLevelIndex > GameManager.Instance.record){
             GameManager.Instance.SetRecord(currentLevelIndex);
         }
+    }
+
+    public void ResetToInitialScenes(){
+        currentLevelIndex = 0;
+        OtherPortal = null;
+        for (int i= 1;i< SceneManager.sceneCount;i++){
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.isLoaded){
+                SceneManager.UnloadSceneAsync(scene);
+            }
+        }
+        PreloadNextLevel();
+
+        // ✅ Reset the portal trigger script manually
+        var portal = GameObject.FindWithTag("Portal");
+        if (portal != null)
+        {
+            portal.GetComponent<PortalCollision>()?.ResetPortalState();
+        }
+
     }
 }

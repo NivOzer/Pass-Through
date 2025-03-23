@@ -31,6 +31,13 @@ public class PortalCollision : MonoBehaviour
         }
     }
 
+    public void ResetPortalState()
+    {
+        hasTeleported = false;
+        playerIsOverlapping = false;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         
@@ -39,8 +46,8 @@ public class PortalCollision : MonoBehaviour
             PortalAudio.PlayOneShot(FinishedLevelSound,0.3f);
             playerIsOverlapping = true;
             hasTeleported = true;
-            PortalManager.Instance.IncrementLevel();
             PortalManager.Instance.TeleportPlayerToOtherPortal(player,this.transform);
+            PortalManager.Instance.IncrementLevel();
             PortalManager.Instance.PreloadNextLevel();
         }
     }
