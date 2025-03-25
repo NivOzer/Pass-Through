@@ -28,12 +28,6 @@ public class PortalManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // public void SetPortals(Transform portal, Transform otherPortal)
-    // {
-    //     // Portal = portal;
-    //     OtherPortal = otherPortal;
-    // }
-
     public void PreloadNextLevel()
     {
         int nextLevelIndex = currentLevelIndex + 1;

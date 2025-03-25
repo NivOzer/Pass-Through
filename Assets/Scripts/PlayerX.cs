@@ -23,7 +23,7 @@ public class PlayerX : MonoBehaviour
         audioManager = audioObj.GetComponent<AudioManagerX>();   
         // Debug.Log(ringWallAmount);
     }
-    void Update()
+    void LateUpdate()
     {
         //Move forward
         transform.position += transform.forward * flySpeed * Time.deltaTime;

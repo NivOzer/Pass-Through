@@ -8,12 +8,16 @@ public class MainMenuScaler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI PlayText;
     [SerializeField] private TextMeshProUGUI descriptionTextUI;
     [SerializeField] private TextMeshProUGUI descriptionTextUI2;
-
+    [SerializeField] private TextMeshProUGUI recordText;
+    [SerializeField] private TextMeshProUGUI record;
 
     void Start()
     {
         AdjustUI();
         Time.timeScale = 0;
+        if (GameManager.Instance.record != 0){
+            record.text = "" + GameManager.Instance.record;
+        }
     }
 
     void AdjustUI()
@@ -35,6 +39,8 @@ public class MainMenuScaler : MonoBehaviour
             descriptionTextUI2.fontSize = 50;
 
             PlayText.fontSize = 130;
+
+
         }
     }
 }

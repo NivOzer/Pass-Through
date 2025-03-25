@@ -1,5 +1,8 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using System.IO;
+using System.Data.Common;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
+        LoadScore();
+        highestLevelText.text = "Highest Level : " + record;
     }
 
     void Update()
@@ -72,9 +77,37 @@ public class GameManager : MonoBehaviour
     public void SetRecord(int level){
         record = level;
         highestLevelText.text = "Highest Level : " + record;
+        SaveScore();
     }
 
     public void GameWon(){
         GameWonMenu.SetActive(true);
+    }
+    
+    [System.Serializable]
+    class SaveData{
+        public int score;
+    }
+
+    public void SaveScore(){
+        SaveData data = new SaveData();
+        data.score = record;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        Debug.Log(json);
+        Debug.Log("Was Saved");
+    }
+
+    public void LoadScore(){
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path)){
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+            record = data.score;
+            Debug.Log(data.score + "has been loaded");
+        }
+        else{
+            Debug.Log("didnt find path to load");
+        }
     }
 }
