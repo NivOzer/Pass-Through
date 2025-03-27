@@ -15,7 +15,7 @@ public class PortalCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!playerCamera || !portal || !otherPortal){
+        if (playerCamera == null || portal == null || otherPortal == null){
             Debug.LogError("PlayerCamera/Portal/OtherPortal is Missing");
             return;
         }

@@ -5,10 +5,7 @@ using System.Collections;
 public class PortalManager : MonoBehaviour
 {
     public static PortalManager Instance { get; private set; }
-
-    // public Transform Portal { get; private set; }
     public Transform OtherPortal { get; private set; }
-
     private int currentLevelIndex = 0;
 
     private void Awake()
@@ -36,9 +33,6 @@ public class PortalManager : MonoBehaviour
             SceneManager.LoadSceneAsync(nextLevelIndex, LoadSceneMode.Additive);
             Debug.Log($"Preloaded level: {nextLevelIndex}");
         }
-
-
-        
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

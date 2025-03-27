@@ -1,46 +1,66 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using System.IO;
-using System.Data.Common;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set;}
     [SerializeField] private GameObject player;
+    [SerializeField] private TextMeshProUGUI highestLevelText;
+    [SerializeField] private GameObject GameWonMenu;
     private GameObject playerClone;
-    private bool cloneCreated = false;
     private Vector3 cloneCreatedPosition;
     private float lastTapTime = 0;
     private float doubleTapTimeBetween = 0.3f;
     private bool doubleTapped = false;
+    private bool cloneCreated = false;
     public int record = 1;
-    [SerializeField] private TextMeshProUGUI highestLevelText;
-    [SerializeField] private GameObject GameWonMenu;
-    private void Awake()
+
+    #region Singleton
+        private void Awake()
+        {
+            if (Instance == null){
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else{
+                Destroy(gameObject);
+            }
+        }
+    #endregion
+
+    void Start()
     {
-        if (Instance == null){
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else{
-            Destroy(gameObject);
-        }
+        LoadScoreToText();
+    }
+
+    private void LoadScoreToText(){
         LoadScore();
         highestLevelText.text = "Highest Level : " + record;
     }
-
+    
     void Update()
     {
-        #region Mobile cloning implementation
-            if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
-                float timeSinceLastTap = Time.time - lastTapTime;
-                if (timeSinceLastTap <= doubleTapTimeBetween){
-                    doubleTapped = true;
-                }
-                lastTapTime = Time.time;
-            }
+        #region Mobile DoubleTap Check
+            HandleDoubleTap();
         #endregion
+
+        #region Cloning
+            HandleCloneToggle();
+            HandleClonePositioning();
+        #endregion
+    }
+
+    private void HandleDoubleTap(){
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began){
+            float timeSinceLastTap = Time.time - lastTapTime;
+            if (timeSinceLastTap <= doubleTapTimeBetween){
+                doubleTapped = true;
+            }
+            lastTapTime = Time.time;
+        }
+    }
+    private void HandleCloneToggle(){
         if (Input.GetKeyDown(KeyCode.Space) || doubleTapped)
         {
             if (!cloneCreated)
@@ -56,7 +76,8 @@ public class GameManager : MonoBehaviour
             }
             doubleTapped = false;
         }
-
+    }
+    private void HandleClonePositioning(){
         // If the clone exists, move it in mirrored relation to the player's movements
         if (cloneCreated && playerClone != null)
         {
@@ -87,7 +108,8 @@ public class GameManager : MonoBehaviour
     public void GameWon(){
         GameWonMenu.SetActive(true);
     }
-    
+
+    #region Data Persistence Between Sessions - Saving & Loading Data
     [System.Serializable]
     class SaveData{
         public int score;
@@ -114,4 +136,5 @@ public class GameManager : MonoBehaviour
             Debug.Log("didnt find path to load");
         }
     }
+    #endregion
 }

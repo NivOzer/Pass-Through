@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerX : MonoBehaviour
 {
-    public Joystick joystick;
-    private bool passedThroughRing = false;
     [SerializeField] float flySpeed;
     [SerializeField] float yawAmount;
+    [SerializeField] GameObject audioObj;
+    public GameObject MissedText;
+    public Joystick joystick;
+    private GameObject portal;
+    private AudioManagerX audioManager;
+    private bool passedThroughRing = false;
     private float yaw;
     private int ringWallAmount;
-    private GameObject portal;
-    public GameObject MisedText;
-    [SerializeField] GameObject audioObj;
-    private AudioManagerX audioManager;
 
     void Start(){
         audioManager = audioObj.GetComponent<AudioManagerX>();   
@@ -94,9 +94,9 @@ public class PlayerX : MonoBehaviour
         Material material = renderer.material;
         material.SetFloat("_Visibility", 1);
         material.SetInt("_InvokeMissZone",1);
-        MisedText.SetActive(true);
+        MissedText.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        MisedText.SetActive(false);
+        MissedText.SetActive(false);
         Debug.Log("Missed, Restarting");
         passedThroughRing = false;
         PortalManager.Instance.ResetToInitialScenes();
