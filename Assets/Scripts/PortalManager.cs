@@ -55,12 +55,8 @@ public class PortalManager : MonoBehaviour
                 return;
             }
         }
-
         Debug.LogWarning($"No OtherPortal found in scene: {scene.name}");
     }
-
-
-
 
     public void TeleportPlayerToOtherPortal(Transform player,Transform Portal)
     {
@@ -76,7 +72,6 @@ public class PortalManager : MonoBehaviour
 
             Debug.Log("Player teleported to OtherPortal.");
             Debug.Log("Moving from scene " + SceneManager.GetActiveScene().name + " to " + (SceneManager.GetActiveScene().buildIndex + 1));
-
         }
     }
 
@@ -98,12 +93,11 @@ public class PortalManager : MonoBehaviour
         }
         PreloadNextLevel();
 
-        // ✅ Reset the portal trigger script manually
+        // Reset the portal trigger script manually
         var portal = GameObject.FindWithTag("Portal");
         if (portal != null)
         {
             portal.GetComponent<PortalCollision>()?.ResetPortalState();
         }
-
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Mono.Cecil.Cil;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,9 @@ public class PlayerX : MonoBehaviour
     }
     void Update()
     {
+        Movement();
+    }
+    private void Movement(){
         //Move forward
         transform.position += transform.forward * flySpeed * Time.deltaTime;
 
@@ -38,7 +42,6 @@ public class PlayerX : MonoBehaviour
         float roll = Mathf.Lerp(0,30,Mathf.Abs(horizontalInput)) * -Mathf.Sign(horizontalInput);
         //Apply Rotation
         transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch + Vector3.forward * roll);
-
     }
 
     void Awake(){
@@ -80,30 +83,47 @@ public class PlayerX : MonoBehaviour
         passedThroughRing = false;
     }
 
-    IEnumerator HitMissZone(GameObject MissZone){
+    IEnumerator HitMissZone(GameObject missZone){
 
         // 🔁 Reset this RingWall if it has one
-        DoubleWall wall = MissZone.GetComponent<DoubleWall>();
+        DoubleWall wall = missZone.GetComponent<DoubleWall>();
         if (wall != null)
         {
             wall.ResetWall();
         }
 
-        audioManager.PlayMissSound();
-        Renderer renderer = MissZone.GetComponent<Renderer>();
-        Material material = renderer.material;
-        material.SetFloat("_Visibility", 1);
-        material.SetInt("_InvokeMissZone",1);
-        MissedText.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        MissedText.SetActive(false);
+        PlayMissFeedback(missZone);
+        yield return ShowMissedText(0.5f);
+
         Debug.Log("Missed, Restarting");
         passedThroughRing = false;
         PortalManager.Instance.ResetToInitialScenes();
         transform.position = new Vector3(0, 0);
-        material.SetInt("_InvokeMissZone",0);
+
+        ResetMaterialFlags(missZone);
     }
 
+    private void PlayMissFeedback(GameObject zone){
+        audioManager.PlayMissSound();
+        var renderer = zone.GetComponent<Renderer>();
+        if (renderer != null){
+            var material = renderer.material;
+            material.SetFloat("_Visibility", 1);
+            material.SetInt("_InvokeMissZone",1);
+        }
+    }
+    IEnumerator ShowMissedText(float duration){
+        MissedText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        MissedText.SetActive(false);
+    }
+    private void ResetMaterialFlags(GameObject zone){
+        var renderer = zone.GetComponent<Renderer>();
+        if (renderer != null){
+            var material = renderer.material;
+            material.SetInt("_InvokeMissZone",0);
+        }
+    }
 
 
 
