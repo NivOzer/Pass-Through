@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private float lastTapTime = 0;
     private float doubleTapTimeBetween = 0.3f;
     private bool doubleTapped = false;
-    public int record = 0;
+    public int record = 1;
     [SerializeField] private TextMeshProUGUI highestLevelText;
     [SerializeField] private GameObject GameWonMenu;
     private void Awake()
@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
             // Same Rotation as player
             playerClone.transform.rotation = player.transform.rotation;
         }
+    }
+
+    public void ResetScore(){
+        SetRecord(0);
     }
 
     public void SetRecord(int level){

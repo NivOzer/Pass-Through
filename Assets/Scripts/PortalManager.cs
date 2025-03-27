@@ -88,8 +88,8 @@ public class PortalManager : MonoBehaviour
 
     public void IncrementLevel(){
         currentLevelIndex++;
-        if (currentLevelIndex > GameManager.Instance.record){
-            GameManager.Instance.SetRecord(currentLevelIndex);
+        if (currentLevelIndex + 1 > GameManager.Instance.record){
+            GameManager.Instance.SetRecord(currentLevelIndex +1);
         }
     }
 

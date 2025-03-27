@@ -8,35 +8,28 @@ public class PortalCamera : MonoBehaviour
 
     void Start()
     {
-        // Find the player's camera in Level 1
-        GameObject playerCamObj = GameObject.FindWithTag("MainCamera");
-        if (playerCamObj != null)
-            playerCamera = playerCamObj.GetComponent<Camera>().transform;
-
-        // Find the portal in Level 1
-        GameObject portalObj = GameObject.FindWithTag("Portal");
-        if (portalObj != null)
-            portal = portalObj.transform;
+        playerCamera = GameObject.FindWithTag("MainCamera")?.GetComponent<Camera>()?.transform;
+        portal = GameObject.FindWithTag("Portal")?.transform;
     }
+
 
     void LateUpdate()
     {
+        if (!playerCamera || !portal || !otherPortal){
+            Debug.LogError("PlayerCamera/Portal/OtherPortal is Missing");
+            return;
+        }
         
-        if (!playerCamera)
-            Debug.LogWarning("Player Camera reference is missing!");
-
-        if (!portal)
-            Debug.LogWarning("Portal reference is missing!");
-
-        if (!otherPortal)
-            Debug.LogWarning("Other Portal reference is missing!");
-
         // Correct position based on portal offset
         Vector3 playerOffsetFromPortal = playerCamera.position - portal.position;
-        transform.position = otherPortal.position + playerOffsetFromPortal;
 
-        // Directly match rotation
+        // Only apply offset if the player is before the portal
+        if (playerOffsetFromPortal.magnitude < 500f)  // adjust threshold as needed
+            transform.position = otherPortal.position + playerOffsetFromPortal;
+        else
+            transform.position = otherPortal.position;
+
         transform.rotation = playerCamera.rotation;
-
     }
+
 }
